@@ -27,10 +27,26 @@ class Ticket {
         $this->age = (int) $age;
     }
 
+    public function getPrice():float {}
+    public function setType($type):void {
+        if (gettype($type) === "string") {
+
+        } else {
+            
+        }
+    }
+    public function getType():string {}
+
     public function calculatePrice():float {
+        // if sats, kontrollera ålder
+        // returnera korrekt pris för barn/vuxen
+        // priset behöver påverkas av biljettyp
         return 1800.00;
     }
 }
 
-// $ticket = new Ticket(42);
-// var_dump($ticket);
+$ticket = new Ticket(0);
+$ticket->setAge(43);
+$price =  $ticket->calculatePrice();
+echo $price;
+var_dump($ticket);
