@@ -21,8 +21,11 @@ class Ticket {
         $this->type = $type;
     }
 
-    
+    public function getAge():int {
+        return $this->age;
+    }
+
 }
 
-$ticket = new Ticket(42);
-var_dump($ticket);
+// $ticket = new Ticket(42);
+// var_dump($ticket);
