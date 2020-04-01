@@ -17,4 +17,33 @@ class TicketTest extends TestCase {
             $age
         );
     }
+
+    /** @test **/
+    // public function itCanChangeAge() {
+    public function it_can_change_age() {
+        // ny instans
+        $ticket = new Ticket();
+        // åldern vi kommer att använda för att kolla
+        $age = 42;
+        // sätt åldern i Ticket med setAge
+        $ticket->setAge($age);
+        // kontrollera att getAge returnerar den valda åldern
+        $this->assertEquals(
+            $age,
+            $ticket->getAge()
+        );
+    }
+
+    /** @test **/
+    public function itShouldReturnTheCorrectPriceForChildren() {
+        // instans & sätta åldern
+        $ticket = new Ticket(15);
+        // räkna ut och hämta priset
+        $ticket->calculatePrice();
+        // hämta och kontrollera pris
+        $this->assertEquals(
+            1800,
+            $ticket->getPrice()
+        );
+    }
 }

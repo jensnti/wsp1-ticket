@@ -4,7 +4,6 @@ class Ticket {
     // pris
     private $price;
     // giltighetstid
-
     // typ av biljett
     private $type; // 1dagars, 2dagars, VIP
     private $types= [
@@ -12,7 +11,6 @@ class Ticket {
         '2 day',
         'VIP'
     ];
-
     // barn / vuxenbiljett
     private $age;
 
@@ -25,6 +23,13 @@ class Ticket {
         return $this->age;
     }
 
+    public function setAge($age):void {
+        $this->age = (int) $age;
+    }
+
+    public function calculatePrice():float {
+        return 1800.00;
+    }
 }
 
 // $ticket = new Ticket(42);
