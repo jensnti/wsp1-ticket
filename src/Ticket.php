@@ -13,7 +13,7 @@ class Ticket {
     ];
     // barn / vuxenbiljett
     private $age;
-
+    private $birthDate;
     private $adultLimit;
 
     public function __construct (
@@ -35,6 +35,7 @@ class Ticket {
     }
 
     public function getPrice():float {
+        // returns null if not set
         return $this->price;
     }
 
@@ -48,17 +49,41 @@ class Ticket {
     public function getType():string {}
 
     public function calculatePrice():void {
-        // if sats, kontrollera ålder $this->age
-        // sätt $this->price med korrekt pris för barn/vuxen
-        // 1800 eller 2200
-        $this->price = 2200.00;
-
+        if ($this->age < $this->adultLimit) {
+            $this->price = 1800.00;
+        } else {
+            $this->price = 2200.00;
+        }
         // priset behöver påverkas av biljettyp
+    }
 
+    /**
+     * This method expects a validated DateTime
+     */
+    public function setBirthDate($birthDate):void {
+        // gör saker med birthdate
+        // spara som instansvariabel
+        try {
+            $this->birthDate = new DateTime($birthDate);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getBirthDate() {
+        return $this->birthDate;
+    }
+
+    public function calculateAge():void {
+        // räkna ut åldern
+        // sätt $this->age
+        $this->age = 20;
     }
 }
 
-// $ticket = new Ticket(0);
+$ticket = new Ticket();
+$ticket->setBirthDate('2000-01-01');
+var_dump($ticket->getBirthDate());
 // $ticket->setAge(43);
 // $price =  $ticket->calculatePrice();
 // echo $price;
