@@ -43,13 +43,17 @@ class TicketTest extends TestCase {
         // hämta och kontrollera pris
         $this->assertEquals(
             1800,
-            $ticket->getPrice() // SKRIV METODEN!
+            $ticket->getPrice()
         );
     }
 
     /** @test **/
     public function itShouldReturnTheCorrectPriceForAdults() {
-        // SKRIV TESTET
-        // kör rött, få det att köra grönt, fixa koden
+        $ticket = new Ticket(40);
+        $ticket->calculatePrice();
+        $this->assertEquals(
+            2200,
+            $ticket->getPrice()
+        );
     }
 }

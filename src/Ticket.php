@@ -14,9 +14,16 @@ class Ticket {
     // barn / vuxenbiljett
     private $age;
 
-    public function __construct ($age = 0, $type = 1) {
+    private $adultLimit;
+
+    public function __construct (
+        $age = 0, 
+        $type = 1, 
+        $adultLimit = 18
+    ) {
         $this->age = (int) $age;
         $this->type = $type;
+        $this->adultLimit = $adultLimit;
     }
 
     public function getAge():int {
@@ -27,26 +34,32 @@ class Ticket {
         $this->age = (int) $age;
     }
 
-    public function getPrice():float {}
+    public function getPrice():float {
+        return $this->price;
+    }
+
     public function setType($type):void {
         if (gettype($type) === "string") {
 
         } else {
-            
+
         }
     }
     public function getType():string {}
 
-    public function calculatePrice():float {
-        // if sats, kontrollera ålder
-        // returnera korrekt pris för barn/vuxen
+    public function calculatePrice():void {
+        // if sats, kontrollera ålder $this->age
+        // sätt $this->price med korrekt pris för barn/vuxen
+        // 1800 eller 2200
+        $this->price = 2200.00;
+
         // priset behöver påverkas av biljettyp
-        return 1800.00;
+
     }
 }
 
-$ticket = new Ticket(0);
-$ticket->setAge(43);
-$price =  $ticket->calculatePrice();
-echo $price;
-var_dump($ticket);
+// $ticket = new Ticket(0);
+// $ticket->setAge(43);
+// $price =  $ticket->calculatePrice();
+// echo $price;
+// var_dump($ticket);
