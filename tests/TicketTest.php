@@ -6,12 +6,10 @@ class TicketTest extends TestCase {
 
     /** @test **/
     public function itShouldReturnAge() {
-        // skapa en ny instans av Ticket
         $ticket = new Ticket();
-        // använd get metoden getAge för att hämta åldern
+        $ticket->setBirthDate('2000-01-01');
+        $ticket->calculateAge();
         $age = $ticket->getAge();
-
-        // kontrollera att $age har rätt värde
         $this->assertEquals(
             0,
             $age
@@ -73,7 +71,7 @@ class TicketTest extends TestCase {
     }
 
     /** @test **/
-    public function itCanReturnABirthDate() {
+    public function itCanReturnABirthDateObject() {
         // skapa en ny instans av Ticket
         $ticket = new Ticket();
         // använd get metoden getAge för att hämta åldern
@@ -88,7 +86,6 @@ class TicketTest extends TestCase {
     public function itCanSetAgeFromBirthDate() {
         $ticket = new Ticket();
 
-        // ny kod som behövs för grönt test
         $ticket->setBirthDate('2000-01-01');
         $ticket->calculateAge();
 

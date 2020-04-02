@@ -2,36 +2,27 @@
 
 class Ticket {
     // pris
-    private $price;
-    // giltighetstid
-    // typ av biljett
+    private $price; // can only be set through calcPrice
     private $type; // 1dagars, 2dagars, VIP
     private $types= [
         '1 day',
         '2 day',
         'VIP'
     ];
-    // barn / vuxenbiljett
-    private $age;
+    private $age; // can only be set from bithDate
     private $birthDate;
     private $adultLimit;
 
     public function __construct (
-        $age = 0, 
         $type = 1, 
         $adultLimit = 18
     ) {
-        $this->age = (int) $age;
         $this->type = $type;
         $this->adultLimit = $adultLimit;
     }
 
     public function getAge():int {
         return $this->age;
-    }
-
-    public function setAge($age):void {
-        $this->age = (int) $age;
     }
 
     public function getPrice():float {
@@ -70,20 +61,21 @@ class Ticket {
         }
     }
 
-    public function getBirthDate() {
+    public function getBirthDate():object {
         return $this->birthDate;
     }
 
     public function calculateAge():void {
-        // räkna ut åldern
-        // sätt $this->age
-        $this->age = 20;
+        $now = new DateTime();
+        $interval = $this->birthDate->diff($now);
+        $this->age = $interval->format('%Y');
     }
 }
 
-$ticket = new Ticket();
-$ticket->setBirthDate('2000-01-01');
-var_dump($ticket->getBirthDate());
+// $ticket = new Ticket();
+// $ticket->setBirthDate('2000-01-01');
+// $ticket->calculateAge();
+// echo $ticket->getAge();
 // $ticket->setAge(43);
 // $price =  $ticket->calculatePrice();
 // echo $price;
