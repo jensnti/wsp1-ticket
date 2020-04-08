@@ -84,7 +84,7 @@ För att komma igång så i er index.html, skapa html:5 grunden och klistra seda
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-Det första vi ska göra är att skapa en [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) request till vårt api för att se om det fungerar.
+Det första vi ska göra är att skapa en [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) request till vår backend för att se om det fungerar.
 Notera att du behöver redigera baseUrl och eventuellt vars get pekar.
 
     const instance = axios.create({
@@ -113,3 +113,29 @@ Kontrollera om hello är satt, [filtrera](https://www.php.net/manual/en/function
 Spara. Kör. Kolla i console samt network tab.
 
 ## Skapa POST request och använd Ticket
+
+För den här delen så behöver vi först skapa ett formulär där vi kan mata in
+antal biljetter samt köparens födelsedatum.
+
+När vi sedan skickat detta formulär så kommer vi att med javascript stoppa att det skickas.
+Vi kommer sedan att ta formulärdatan och skicka den till vår backend med hjälp av axios.
+
+Javascript delen kommer att se ut ungefär såhär. Men vi kommer att behöva att välja element
+ur vårt dokument innan vi kan använda det.
+
+    form.addEventListener('submit', (el) => {
+        el.preventDefault();
+
+        let data = new FormData(form);
+
+        instance.post('api.php', data)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    })
+
+Det som återstår då är att skapa en route i vår backend som tar emot formdatan och skapar Tickets
+från den.
