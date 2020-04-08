@@ -49,6 +49,7 @@ TicketTest är våra phpunit-tester för att kontrollera att allt fungerar som t
 ## v.15
 
 Vi ska nu arbeta med att faktiskt använda klassen i ett webbkontext och inte bara köra den från cmdline eller med tester.
+Detta så att vi nu kan komma tillbaks till att jobba med [REST](https://sv.wikipedia.org/wiki/Representational_State_Transfer).
 Din klass bör fungera nu och testerna bör vara gröna så att du kan använda den (se classroom för hemuppgift).
 
 Det viktigaste är att din Ticket klass nu kan ta emot ett födelsedatum, räkna ut åldern och sedan priset.
@@ -164,3 +165,10 @@ ur vårt dokument innan vi kan använda det.
 
 Det som återstår då är att skapa en route i vår backend som tar emot formdatan och skapar Tickets
 från den.
+
+För att hjälpa oss att testa detta så kan vi använda ett program som heter [Postman](https://www.postman.com/). 
+Postman låter oss skriva requests och skicka dem, inspektera svar osv. Det kan vara mycket hjälpsamt när vi 
+felsöker och testar en backend/api.
+
+Vi behöver även ägna lite tid åt att förstå [http status koder](https://developer.mozilla.org/sv-SE/docs/Web/HTTP/Status),
+något som ni säkert har sett tidigare, 404, 500 osv. Men vad är koden för OK?
