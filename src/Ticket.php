@@ -13,10 +13,7 @@ class Ticket {
     private $birthDate;
     private $adultLimit;
 
-    public function __construct (
-        $type = 1, 
-        $adultLimit = 18
-    ) {
+    public function __construct ($type = 1, $adultLimit = 18) {
         $this->type = $type;
         $this->adultLimit = $adultLimit;
     }
@@ -29,15 +26,6 @@ class Ticket {
         // returns null if not set
         return $this->price;
     }
-
-    public function setType($type):void {
-        if (gettype($type) === "string") {
-
-        } else {
-
-        }
-    }
-    public function getType():string {}
 
     public function calculatePrice():void {
         if ($this->age < $this->adultLimit) {
@@ -52,8 +40,6 @@ class Ticket {
      * This method expects a validated DateTime
      */
     public function setBirthDate($birthDate):void {
-        // gör saker med birthdate
-        // spara som instansvariabel
         try {
             $this->birthDate = new DateTime($birthDate);
         } catch (Exception $e) {
@@ -71,12 +57,3 @@ class Ticket {
         $this->age = $interval->format('%Y');
     }
 }
-
-// $ticket = new Ticket();
-// $ticket->setBirthDate('2000-01-01');
-// $ticket->calculateAge();
-// echo $ticket->getAge();
-// $ticket->setAge(43);
-// $price =  $ticket->calculatePrice();
-// echo $price;
-// var_dump($ticket);
