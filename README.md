@@ -67,6 +67,9 @@ Börja med att starta [apache](https://www.apache.org/)
 
     sudo service apache2 restart
 
+Funkar inte apache, så måste ni kolla i dokumentet Utvecklarmiljö WSL hur ni ändrar port / felsöker
+Detsamma gäller för att få php att fungera med user directories, ni behöver det.
+
 Gå sedan in i det här projectets root
 
     cd
