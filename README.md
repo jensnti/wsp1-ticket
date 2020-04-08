@@ -1,22 +1,31 @@
 # wsp1-ticket
 
-Material för php grunder och test
+Denna uppgift förutsätter att du har följt instruktionerna i WSL dokumentet.
 
-Skapa 2 mappar, 
+Material för php grunder och test.
 
+Clona detta repo från github classroom.
+
+    cd
+    cd code
+    git clone https://github.com/NTIG-Umea/webbserver-ticket-GITUSERNAME
+
+Skapa 2 directories
+
+    cd webbserver-ticket-GITUSERNAME
     mkdir tests
     mkdir src
 
-Kör composer install
+Kör [composer](https://getcomposer.org/) install
 
-Om det strular så kan du behöva installera några saker för att få igång phpunit
+Om det strular så kan du behöva installera några saker för att få igång [phpunit](https://phpunit.de/)
 
     sudo apt install composer
     sudo apt install php-xml
     sudo apt install php-mbstring
 
-    sudo phpenmod php-xml
-    sudo phpenmod php-mbstring
+    sudo phpenmod xml
+    sudo phpenmod mbstring
 
 Sedan borde du kunna köra(i repomappen)
 
@@ -26,6 +35,17 @@ Testerna kör du med
 
     composer test
 
+Får du felet att Ticket klassen inte hittas så kör
+
+    composer dump-autoload
+
+## Ticket class och TicketTest
+
+I src mappen så kommer vi att skapa en klass, Ticket.
+Ticket ska användas för att skapa biljetter och räkna ut priset för dessa.
+
+TicketTest är våra phpunit-tester för att kontrollera att allt fungerar som tänkt.
+
 ## v.15
 
 Vi ska nu arbeta med att faktiskt använda klassen i ett webbkontext och inte bara köra den från cmdline eller med tester.
@@ -33,11 +53,16 @@ Din klass bör fungera nu och testerna bör vara gröna så att du kan använda 
 
 Det viktigaste är att din Ticket klass nu kan ta emot ett födelsedatum, räkna ut åldern och sedan priset.
 
+    setBirthdate(YYYY-MM-DD)
+    calculateAge() // Räkna ut och sätt $this->age
+    calculatePrice() // Använd $this->age och spara $this->price
+    getPrice() // svara med $this->price
+
 För att förbereda det vi ska göra nu så behöver vi köra igång apache och se till att vi kan komma åt det vårt arbete.
 
 ### Setup
 
-Börja med att starta apache
+Börja med att starta [apache](https://www.apache.org/)
 
     sudo service apache2 restart
 
@@ -80,7 +105,7 @@ heter det [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XML
 
 Hursomhelst så ska vi arbeta med en klient för det här som heter [axios](https://github.com/axios/axios). Den underlättar arbetet med detta avsevärt.
 
-För att komma igång så i er index.html, skapa html:5 grunden och klistra sedan in följande länk innuti head elementet.
+För att komma igång så i er index.html, skapa [html:5](https://docs.emmet.io/cheat-sheet/) grunden och klistra sedan in följande länk innuti head elementet.
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
