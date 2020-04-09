@@ -14,16 +14,29 @@
         baseURL: 'http://localhost/~jens/ticket/',
     });
 
-    instance.get('api.php')
+    let data = new FormData();
+    data.set('birthdate', '1980-12-12');
+    // hur kan jag skicka quantity?
+
+    instance.post('api.php', data)
     .then(function (response) {
-        // handle success
         console.log(response);
-        console.log(response.data);
     })
     .catch(function (error) {
-        // handle error
         console.log(error);
-    })
+    });
+
+    // instance.get('api.php?hello')
+    // .then(function (response) {
+    //     // handle success
+    //     console.log(response);
+    //     console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //     // handle error
+    //     console.log(error);
+    // })
+
     </script>
 </body>
 </html>
